@@ -1,0 +1,15 @@
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/ament_index/resource_index/package_run_dependencies/imu_pi_publisher
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/ament_index/resource_index/parent_prefix_path/imu_pi_publisher
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/environment/ament_prefix_path.sh
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/environment/ament_prefix_path.dsv
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/environment/path.sh
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/environment/path.dsv
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/local_setup.bash
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/local_setup.sh
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/local_setup.zsh
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/local_setup.dsv
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/package.dsv
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/ament_index/resource_index/packages/imu_pi_publisher
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/cmake/imu_pi_publisherConfig.cmake
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/cmake/imu_pi_publisherConfig-version.cmake
+/home/ved/ros2_doc/ros_pi_ws/install/imu_pi_publisher/share/imu_pi_publisher/package.xml

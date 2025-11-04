@@ -1,0 +1,9 @@
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/uninstall.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/imu_pi_publisher_uninstall.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/test.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/edit_cache.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/rebuild_cache.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/list_install_components.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/install.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/install/local.dir
+/home/ved/ros2_doc/ros_pi_ws/build/imu_pi_publisher/CMakeFiles/install/strip.dir

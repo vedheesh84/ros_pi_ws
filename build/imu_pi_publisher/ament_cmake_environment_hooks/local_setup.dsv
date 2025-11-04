@@ -1,0 +1,2 @@
+source;share/imu_pi_publisher/environment/ament_prefix_path.sh
+source;share/imu_pi_publisher/environment/path.sh
