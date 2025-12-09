@@ -1,0 +1,67 @@
+# =============================================================================
+# Arm Poses Configuration
+# =============================================================================
+# Custom joint positions for pick-and-place operations.
+#
+# Joint names (from arm URDF):
+#   - joint_1: Base rotation (shoulder pan)
+#   - joint_2: Shoulder pitch
+#   - joint_3: Elbow pitch
+#   - joint_4: Wrist pitch
+#   - gripper_base_joint: Gripper rotation
+#
+# All values are in radians.
+#
+# Note: Named poses like "home", "stowed", "open", "closed" are defined
+# in MoveIt SRDF and accessed via move_group.set_named_target()
+# =============================================================================
+
+arm_poses:
+  # Pose to show the picked object (with QR code) to the front-mounted camera
+  # The gripper should be positioned in front of and facing the camera
+  scan_pose:
+    joint_1: 0.0       # Centered
+    joint_2: 0.3       # Slight forward tilt
+    joint_3: -0.8      # Elbow bent back
+    joint_4: 0.5       # Wrist angled to face camera
+    gripper_base_joint: 0.0
+
+  # Pre-pick approach pose - arm extended forward, ready to descend
+  approach_pose:
+    joint_1: 0.0       # Centered over pickup area
+    joint_2: 0.7       # Leaning forward
+    joint_3: -0.5      # Elbow slightly bent
+    joint_4: 0.0       # Wrist straight
+    gripper_base_joint: 0.0
+
+  # Pick position - arm lowered to grasp object
+  pick_pose:
+    joint_1: 0.0       # Centered
+    joint_2: 1.0       # More forward lean
+    joint_3: -0.3      # Elbow extended
+    joint_4: 0.0       # Wrist straight down
+    gripper_base_joint: 0.0
+
+  # Lifted position after picking - object raised for transport
+  lift_pose:
+    joint_1: 0.0       # Centered
+    joint_2: 0.5       # Moderate forward
+    joint_3: -0.6      # Elbow bent
+    joint_4: 0.2       # Slight wrist angle
+    gripper_base_joint: 0.0
+
+  # Place approach pose - similar to approach but for placing
+  place_approach_pose:
+    joint_1: 0.0
+    joint_2: 0.7
+    joint_3: -0.5
+    joint_4: 0.0
+    gripper_base_joint: 0.0
+
+  # Place position - arm lowered to release object
+  place_pose:
+    joint_1: 0.0
+    joint_2: 1.0
+    joint_3: -0.3
+    joint_4: 0.0
+    gripper_base_joint: 0.0

@@ -1,0 +1,81 @@
+# Arduino Serial Communication Configuration with PCA9685
+# This file configures the serial communication between ROS2 and Arduino Uno with PCA9685 servo driver
+
+serial_driver:
+  ros__parameters:
+    device: "/dev/ttyUSB0"  # Default Arduino serial port
+    baud_rate: 115200
+    timeout_ms: 1000
+    frame_id: "arduino_base"
+
+# PCA9685 Servo Driver Configuration
+pca9685_config:
+  ros__parameters:
+    i2c_address: 0x40
+    pwm_frequency: 50.0  # Hz
+    servo_min_us: 600    # microseconds
+    servo_max_us: 2400   # microseconds
+    smooth_movement:
+      step_delay_ms: 30
+      step_degrees: 1.0
+
+# Arduino sensor data publishers
+arduino_sensors:
+  ros__parameters:
+    publish_rate: 50.0  # Hz
+    sensors:
+      - name: "analog_sensors"
+        topic: "/arduino/analog_sensors"
+        msg_type: "sensor_msgs/msg/JointState"
+      - name: "digital_sensors" 
+        topic: "/arduino/digital_sensors"
+        msg_type: "std_msgs/msg/Int32MultiArray"
+
+# Arduino command subscribers
+arduino_commands:
+  ros__parameters:
+    commands:
+      - name: "servo_commands"
+        topic: "/arduino/servo_commands"
+        msg_type: "sensor_msgs/msg/JointState"
+      - name: "digital_outputs"
+        topic: "/arduino/digital_outputs"
+        msg_type: "std_msgs/msg/Int32MultiArray"
+      - name: "pwm_commands"
+        topic: "/arduino/pwm_commands"
+        msg_type: "std_msgs/msg/Float32MultiArray"
+
+# Arduino joint mapping for robot control with PCA9685 channels
+joint_mapping:
+  ros__parameters:
+    arduino_to_robot_joints:
+      servo_0: "joint_1"        # PCA9685 Channel 0
+      servo_1: "joint_2"        # PCA9685 Channel 1
+      servo_2: "joint_3"        # PCA9685 Channel 2
+      servo_3: "joint_4"        # PCA9685 Channel 4
+      servo_4: "gripper_base_joint"  # PCA9685 Channel 5
+      servo_5: "left_gear_joint"     # PCA9685 Channel 6
+    
+    analog_pins:
+      A0: "potentiometer_1"
+      A1: "potentiometer_2"
+      A2: "potentiometer_3"
+      A3: "potentiometer_4"
+      A4: "force_sensor_1"
+      A5: "force_sensor_2"
+    
+    digital_pins:
+      D2: "limit_switch_1"
+      D3: "limit_switch_2"
+      D4: "limit_switch_3"
+      D5: "limit_switch_4"
+      D6: "emergency_stop"
+      D7: "gripper_sensor"
+
+# Safety and limits
+safety_limits:
+  ros__parameters:
+    max_servo_angle: 180.0  # degrees
+    min_servo_angle: 0.0    # degrees
+    emergency_stop_enabled: true
+    timeout_ms: 5000

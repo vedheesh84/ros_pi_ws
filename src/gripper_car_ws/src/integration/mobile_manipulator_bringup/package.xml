@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mobile_manipulator_bringup</name>
+  <version>1.0.0</version>
+  <description>
+    Master bringup package for the complete mobile manipulator system.
+    Orchestrates all subsystems: base, arm, sensors, navigation, and MoveIt.
+
+    Launch modes:
+    - Hardware: Real robot with Arduino bridges
+    - Simulation: Gazebo with simulated sensors
+  </description>
+  <maintainer email="user@example.com">User</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!-- Robot description -->
+  <exec_depend>mobile_manipulator_description</exec_depend>
+  <exec_depend>mobile_base_description</exec_depend>
+  <exec_depend>arm_description</exec_depend>
+
+  <!-- Controllers -->
+  <exec_depend>base_controller</exec_depend>
+  <exec_depend>arm_controller</exec_depend>
+  <exec_depend>arm_moveit</exec_depend>
+
+  <!-- Sensors -->
+  <exec_depend>lidar_driver</exec_depend>
+  <exec_depend>camera_driver</exec_depend>
+
+  <!-- Navigation -->
+  <exec_depend>navigation_bringup</exec_depend>
+
+  <!-- Simulation -->
+  <exec_depend>gazebo_ros</exec_depend>
+
+  <!-- Core ROS2 -->
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <!-- Teleop -->
+  <exec_depend>teleop_twist_keyboard</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

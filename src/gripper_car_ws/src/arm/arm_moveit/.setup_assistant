@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: arm_description
+    relative_path: urdf/arm.urdf.xacro
+  srdf:
+    relative_path: config/mobile_arm_bot_2.srdf
+  package_settings:
+    author_name: ved
+    author_email: ved@gimail.com
+    generated_timestamp: 1765263375
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position

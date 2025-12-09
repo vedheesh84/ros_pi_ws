@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>lidar_driver</name>
+  <version>1.0.0</version>
+  <description>
+    Modular LiDAR driver package supporting multiple LiDAR types.
+    Plug-and-play: copy this package to any ROS2 project for LiDAR functionality.
+
+    Supported LiDARs:
+    - RPLIDAR A1/A2/A3
+    - YDLIDAR X2/X4/G2/G4
+    - LDLIDAR LD06/LD19
+  </description>
+  <maintainer email="user@example.com">User</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>rplidar_ros</exec_depend>
+  <exec_depend>ydlidar_ros2_driver</exec_depend>
+  <exec_depend>ldlidar_stl_ros2</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

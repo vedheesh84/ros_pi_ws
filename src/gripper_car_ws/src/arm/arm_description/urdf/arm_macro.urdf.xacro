@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<!--
+  Arm Macro URDF - for integration with other robots
+  Include this file and call xacro:arm_macro to attach arm to parent link
+-->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="arm_macro" params="prefix parent *origin">
+
+    <!-- Inertia Macros -->
+    <xacro:macro name="cyl_inertia" params="m r h">
+      <inertia ixx="${m*(3*r*r+h*h)/12.0}" ixy="0.0" ixz="0.0"
+               iyy="${m*(3*r*r+h*h)/12.0}" iyz="0.0"
+               izz="${m*r*r/2.0}"/>
+    </xacro:macro>
+
+    <xacro:macro name="box_inertia_arm" params="m x y z">
+      <inertia ixx="${m*(y*y+z*z)/12.0}" ixy="0.0" ixz="0.0"
+               iyy="${m*(x*x+z*z)/12.0}" iyz="0.0"
+               izz="${m*(x*x+y*y)/12.0}"/>
+    </xacro:macro>
+
+    <!-- Base Joint -->
+    <joint name="${prefix}arm_base_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+
+    <!-- Base Link -->
+    <link name="${prefix}base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://arm_description/meshes/arm_base_link.STL"/>
+        </geometry>
+        <material name="arm_mat"><color rgba="0.8 0.8 0.9 1.0"/></material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://arm_description/meshes/arm_base_link.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.00036726 0.0001156 0.022489" rpy="0 0 0"/>
+        <mass value="0.094"/>
+        <xacro:cyl_inertia m="0.094" r="0.04" h="0.056"/>
+      </inertial>
+    </link>
+
+    <!-- Joint 1 -->
+    <joint name="${prefix}joint_1" type="revolute">
+      <origin xyz="0 0 0.056" rpy="0 0 -0.26189"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-pi}" upper="${pi}" effort="10.0" velocity="2.0"/>
+    </joint>
+
+    <link name="${prefix}link_1">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/link_1.STL"/></geometry>
+        <material name="arm_mat"/>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/link_1.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.002243 0.0075762 0.018765" rpy="0 0 0"/>
+        <mass value="0.072"/>
+        <xacro:cyl_inertia m="0.072" r="0.03" h="0.08"/>
+      </inertial>
+    </link>
+
+    <!-- Joint 2 -->
+    <joint name="${prefix}joint_2" type="revolute">
+      <origin xyz="0.013919 0 0.040276" rpy="0 -0.49165 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-pi/2}" upper="${pi/2}" effort="10.0" velocity="2.0"/>
+    </joint>
+
+    <link name="${prefix}link_2">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/link_2.STL"/></geometry>
+        <material name="arm_mat"/>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/link_2.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.00012948 -0.0043336 0.059294" rpy="0 0 0"/>
+        <mass value="0.057"/>
+        <xacro:cyl_inertia m="0.057" r="0.025" h="0.12"/>
+      </inertial>
+    </link>
+
+    <!-- Joint 3 -->
+    <joint name="${prefix}joint_3" type="revolute">
+      <origin xyz="0 0 0.12" rpy="-0.0085366 -0.072864 -0.0012933"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-pi/2}" upper="${pi/2}" effort="10.0" velocity="2.0"/>
+    </joint>
+
+    <link name="${prefix}link_3">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/link_3.STL"/></geometry>
+        <material name="arm_mat"/>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/link_3.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.03808 0.013781 -0.00091995" rpy="0 0 0"/>
+        <mass value="0.057"/>
+        <xacro:cyl_inertia m="0.057" r="0.02" h="0.10"/>
+      </inertial>
+    </link>
+
+    <!-- Joint 4 -->
+    <joint name="${prefix}joint_4" type="revolute">
+      <origin xyz="0.077872 0.013612 -0.0072246" rpy="0.00023545 0.017066 0.0012724"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-pi/2}" upper="${pi/2}" effort="5.0" velocity="2.0"/>
+    </joint>
+
+    <link name="${prefix}link_4">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/link_4.STL"/></geometry>
+        <material name="arm_mat"/>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/link_4.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.029998 -0.0057413 0.0048155" rpy="0 0 0"/>
+        <mass value="0.045"/>
+        <xacro:cyl_inertia m="0.045" r="0.02" h="0.08"/>
+      </inertial>
+    </link>
+
+    <!-- Gripper Base Joint -->
+    <joint name="${prefix}gripper_base_joint" type="revolute">
+      <origin xyz="0.039739 5.0229E-05 0.0046381" rpy="-0.025359 1.0602 -0.014195"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}gripper_base_link"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-pi}" upper="${pi}" effort="5.0" velocity="2.0"/>
+    </joint>
+
+    <link name="${prefix}gripper_base_link">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/gripper_base_link.STL"/></geometry>
+        <material name="gripper_mat"><color rgba="0.3 0.3 0.3 1.0"/></material>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/gripper_base_link.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.023551 -0.014074 0.0056942" rpy="0 0 0"/>
+        <mass value="0.030"/>
+        <xacro:box_inertia_arm m="0.030" x="0.04" y="0.04" z="0.04"/>
+      </inertial>
+    </link>
+
+    <!-- Left Gear Joint -->
+    <joint name="${prefix}left_gear_joint" type="revolute">
+      <origin xyz="0.038 0.0018999 1.658E-05" rpy="0.0087219 -0.00028924 0.033149"/>
+      <parent link="${prefix}gripper_base_link"/>
+      <child link="${prefix}left_gear_link"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="0" upper="${pi/4}" effort="5.0" velocity="1.0"/>
+    </joint>
+
+    <link name="${prefix}left_gear_link">
+      <visual>
+        <geometry><mesh filename="package://arm_description/meshes/left_gear_link.STL"/></geometry>
+        <material name="gripper_mat"/>
+      </visual>
+      <collision>
+        <geometry><mesh filename="package://arm_description/meshes/left_gear_link.STL"/></geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0056831 -0.00040658 0.016" rpy="0 0 0"/>
+        <mass value="0.01"/>
+        <xacro:box_inertia_arm m="0.01" x="0.02" y="0.02" z="0.01"/>
+      </inertial>
+    </link>
+
+    <!-- Left Link + Finger (simplified) -->
+    <joint name="${prefix}left_link_joint" type="fixed">
+      <origin xyz="0.058 -0.016986 -0.0016533" rpy="0.0087164 0.00042202 -0.048378"/>
+      <parent link="${prefix}left_gear_link"/>
+      <child link="${prefix}left_link"/>
+    </joint>
+    <link name="${prefix}left_link">
+      <visual><geometry><mesh filename="package://arm_description/meshes/left_link.STL"/></geometry><material name="gripper_mat"/></visual>
+      <collision><geometry><mesh filename="package://arm_description/meshes/left_link.STL"/></geometry></collision>
+      <inertial>
+        <origin xyz="0.0155 -7.3067E-15 0.017505" rpy="0 0 0"/>
+        <mass value="0.005"/>
+        <xacro:box_inertia_arm m="0.005" x="0.01" y="0.01" z="0.03"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}left_finger_joint" type="fixed">
+      <origin xyz="0.030728 0.0010745 0.013997" rpy="0 0 -0.4368"/>
+      <parent link="${prefix}left_link"/>
+      <child link="${prefix}left_finger_link"/>
+    </joint>
+    <link name="${prefix}left_finger_link">
+      <visual><geometry><mesh filename="package://arm_description/meshes/left_finger_link.STL"/></geometry><material name="gripper_mat"/></visual>
+      <collision><geometry><mesh filename="package://arm_description/meshes/left_finger_link.STL"/></geometry></collision>
+      <inertial>
+        <origin xyz="0.026893 0.0045131 -0.0042469" rpy="0 0 0"/>
+        <mass value="0.003"/>
+        <xacro:box_inertia_arm m="0.003" x="0.01" y="0.01" z="0.02"/>
+      </inertial>
+    </link>
+
+    <!-- Right Gear Joint (Mimic) -->
+    <joint name="${prefix}right_gear_joint" type="revolute">
+      <origin xyz="0.038 -0.024999 -0.00021816" rpy="0.0087077 0.00057486 -0.06592"/>
+      <parent link="${prefix}gripper_base_link"/>
+      <child link="${prefix}right_gear_link"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-pi/4}" upper="0" effort="5.0" velocity="1.0"/>
+      <mimic joint="${prefix}left_gear_joint" multiplier="-1" offset="0"/>
+    </joint>
+
+    <link name="${prefix}right_gear_link">
+      <visual><geometry><mesh filename="package://arm_description/meshes/right_gear_link.STL"/></geometry><material name="gripper_mat"/></visual>
+      <collision><geometry><mesh filename="package://arm_description/meshes/right_gear_link.STL"/></geometry></collision>
+      <inertial>
+        <origin xyz="0.0055788 0.00060197 0.016" rpy="0 0 0"/>
+        <mass value="0.01"/>
+        <xacro:box_inertia_arm m="0.01" x="0.02" y="0.02" z="0.01"/>
+      </inertial>
+    </link>
+
+    <!-- Right Link + Finger -->
+    <joint name="${prefix}right_link_joint" type="fixed">
+      <origin xyz="0.058 -0.0069838 -0.001891" rpy="0.0087015 -0.00066156 0.07588"/>
+      <parent link="${prefix}right_gear_link"/>
+      <child link="${prefix}right_link"/>
+    </joint>
+    <link name="${prefix}right_link">
+      <visual><geometry><mesh filename="package://arm_description/meshes/right_link.STL"/></geometry><material name="gripper_mat"/></visual>
+      <collision><geometry><mesh filename="package://arm_description/meshes/right_link.STL"/></geometry></collision>
+      <inertial>
+        <origin xyz="0.0155 -7.3899E-15 0.01783" rpy="0 0 0"/>
+        <mass value="0.005"/>
+        <xacro:box_inertia_arm m="0.005" x="0.01" y="0.01" z="0.03"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}right_finger_joint" type="fixed">
+      <origin xyz="0.030747 0 0.0055031" rpy="-3.1416 0 0.46391"/>
+      <parent link="${prefix}right_link"/>
+      <child link="${prefix}right_finger_link"/>
+    </joint>
+    <link name="${prefix}right_finger_link">
+      <visual><geometry><mesh filename="package://arm_description/meshes/right_finger_link.STL"/></geometry><material name="gripper_mat"/></visual>
+      <collision><geometry><mesh filename="package://arm_description/meshes/right_finger_link.STL"/></geometry></collision>
+      <inertial>
+        <origin xyz="0.026893 0.0045131 -0.0042469" rpy="0 0 0"/>
+        <mass value="0.003"/>
+        <xacro:box_inertia_arm m="0.003" x="0.01" y="0.01" z="0.02"/>
+      </inertial>
+    </link>
+
+  </xacro:macro>
+
+</robot>

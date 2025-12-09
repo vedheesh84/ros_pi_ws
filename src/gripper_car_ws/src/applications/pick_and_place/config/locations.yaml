@@ -1,0 +1,45 @@
+# =============================================================================
+# Named Locations Configuration
+# =============================================================================
+# Maps QR code content (location names) to navigation coordinates.
+#
+# Each location has:
+#   - x, y: Position in map frame (meters)
+#   - theta: Orientation (radians, 0 = facing +X, pi/2 = facing +Y)
+#
+# The QR code on objects should contain the location name (e.g., "station_A")
+# which is then looked up in this file to get navigation coordinates.
+#
+# Special locations:
+#   - pickup: Where the robot picks up objects
+#   - default: Fallback if QR code content is not recognized
+# =============================================================================
+
+locations:
+  # Pickup station - where objects with QR codes are placed for pickup
+  pickup:
+    x: 0.0
+    y: 0.0
+    theta: 0.0  # Facing forward (+X direction)
+
+  # Delivery stations - destinations encoded in QR codes
+  station_A:
+    x: 2.0
+    y: 1.0
+    theta: 1.57  # Facing +Y (90 degrees)
+
+  station_B:
+    x: 3.0
+    y: -1.5
+    theta: 0.0  # Facing +X
+
+  station_C:
+    x: -1.0
+    y: 2.0
+    theta: 3.14  # Facing -X (180 degrees)
+
+  # Default fallback location if QR code content is unknown
+  default:
+    x: 0.5
+    y: 0.5
+    theta: 0.0
