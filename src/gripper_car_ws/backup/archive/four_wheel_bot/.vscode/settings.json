@@ -1,5 +1,0 @@
-{
-    "urdf-visualizer.packages": {
-        "four_wheel_bot": "/home/varun/xprj/ros2_ws/src/four_wheel_bot"
-    }
-}
