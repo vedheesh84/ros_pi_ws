@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+    <link name="laser_frame">
+        <visual>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+            <material name="lidar_black">
+                <color rgba="0.1 0.1 0.1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="${lidar_mass}"/>
+            <xacro:cylinder_inertia m="${lidar_mass}" r="${lidar_radius}" h="${lidar_height}"/>
+        </inertial>
+
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="body_link"/>
+        <child link="laser_frame"/>
+        <!-- place wheel at front-right of base (x, y, z) -->
+        <origin xyz="-0.15 0 ${chassis_height/2 + lidar_height/2}" rpy="0 0 0"/>
+    </joint>
+
+
+    
+
+</robot>
+
+
+
+
+    
+
+
