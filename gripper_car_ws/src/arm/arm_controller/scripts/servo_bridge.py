@@ -39,7 +39,7 @@ class ServoBridge(Node):
         super().__init__('servo_bridge')
 
         # Declare parameters
-        self.declare_parameter('serial_port', '/dev/ttyUSB0')
+        self.declare_parameter('serial_port', '/dev/ttyACM0')
         self.declare_parameter('baud_rate', 115200)
         self.declare_parameter('publish_rate', 50.0)
         self.declare_parameter('wait_for_ack', True)  # wait for Arduino acknowledgment

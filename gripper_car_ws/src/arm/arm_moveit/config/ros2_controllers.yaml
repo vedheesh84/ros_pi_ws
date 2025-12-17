@@ -11,8 +11,8 @@ controller_manager:
       type: position_controllers/GripperActionController
 
 
-    joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
+#    joint_state_broadcaster:
+#      type: joint_state_broadcaster/JointStateBroadcaster
 
 arm_controller:
   ros__parameters:
@@ -30,3 +30,7 @@ arm_controller:
 gripper_controller:
   ros__parameters:
     joint: left_gear_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position

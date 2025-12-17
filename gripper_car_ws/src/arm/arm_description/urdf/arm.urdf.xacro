@@ -235,7 +235,7 @@
                         parent="gripper_base_link" child="right_gear_link"
                         xyz="0.038 -0.024999 -0.00021816"
                         rpy="0.0087077 0.00057486 -0.06592"
-                        axis="0 0 -1"
+                        axis="0 0 1"
                         lower="-1.0" upper="0"
                         effort="2" velocity="1.0"
                         mimic_joint="left_gear_joint" multiplier="-1" offset="0"/>
@@ -253,7 +253,7 @@
                         parent="gripper_base_link" child="left_link"
                         xyz="0.058 -0.016986 -0.0016533"
                         rpy="0.0087164 0.00042202 -0.048378"
-                        axis="0 0 -1"
+                        axis="0 0 1"
                         lower="-1.0" upper="0"
                         effort="2" velocity="1.0"
                         mimic_joint="left_gear_joint" multiplier="-1" offset="0"/>

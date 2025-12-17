@@ -6,7 +6,7 @@ Launch differential drive controller with Arduino bridge.
 
 Usage:
     ros2 launch base_controller base_control.launch.py
-    ros2 launch base_controller base_control.launch.py serial_port:=/dev/ttyUSB0
+    ros2 launch base_controller base_control.launch.py serial_port:=/dev/ttyACM0
     ros2 launch base_controller base_control.launch.py wheel_radius:=0.1 wheel_base:=0.5
 """
 
@@ -18,7 +18,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('serial_port', default_value='/dev/ttyUSB0',
+        DeclareLaunchArgument('serial_port', default_value='/dev/ttyACM0',
             description='Arduino serial port'),
         DeclareLaunchArgument('baud_rate', default_value='115200',
             description='Serial baud rate'),

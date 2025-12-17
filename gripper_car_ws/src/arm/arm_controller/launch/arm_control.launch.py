@@ -19,7 +19,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('serial_port', default_value='/dev/ttyUSB0',
+        DeclareLaunchArgument('serial_port', default_value='/dev/ttyACM0',
             description='Arduino serial port'),
         DeclareLaunchArgument('baud_rate', default_value='115200',
             description='Serial baud rate'),

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  Mobile Manipulator Combined URDF
+  =================================
+  Integrates:
+  - mobile_base_description (4-wheel differential drive)
+  - arm_description (6-DOF robotic arm with gripper)
+
+  Usage:
+    ros2 launch mobile_manipulator_description display.launch.py
+-->
+
+<robot name="mobile_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Include base macros -->
+  <xacro:include filename="$(find mobile_base_description)/urdf/mobile_base.urdf.xacro"/>
+
+  <!-- Include arm macro -->
+  <xacro:include filename="$(find arm_description)/urdf/arm_macro.urdf.xacro"/>
+
+  <!-- Include lidar -->
+  <xacro:include filename="$(find ydlidar_ros2_driver)/urdf/lidar.xacro"/>
+
+    <xacro:arm_macro
+      parent="arm_mount_link"
+      prefix=""
+      xyz="0 0 0"
+      rpy="0 0 0"/>
+
+
+
+    
+
+    
+</robot>   
